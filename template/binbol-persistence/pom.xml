@@ -10,11 +10,11 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>binbol-entity</artifactId>
+	<artifactId>binbol-persistence</artifactId>
 	<packaging>jar</packaging>
 
-	<name>binbol-entity</name>
-	<description>Bbinbol entity</description>
+	<name>binbol-persistence</name>
+	<description>Bbinbol persistence</description>
 
 	<dependencies>
 		<dependency>

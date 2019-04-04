@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.binbol</groupId>
-	<artifactId>binbol-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>hr-parent</artifactId>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>com.binbol 1.0</name>
@@ -17,11 +17,13 @@
         <maven.compiler.source>1.8</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-        <spring.security.version>4.0.4.RELEASE</spring.security.version>
-        <spring.integration.version>4.2.5.RELEASE</spring.integration.version>
+        <spring.security.version>5.1.5.RELEASE</spring.security.version>
+        <spring.integration.version>5.1.5.RELEASE</spring.integration.version>
         <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
         <mysql.driver.version>8.0.15</mysql.driver.version>
         <hinber.core.version>5.4.1.Final</hinber.core.version>
+        <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
+        <modelmapper.version>2.3.2</modelmapper.version>
 	</properties>
 	
     <parent>
@@ -32,9 +34,10 @@
 	</parent>
 
 	<modules>
-        <module>binbol-application</module>
-        <module>binbol-entity</module>
-        <module>binbol</module>
+		<module>../binbol-common</module>
+        <module>hr-application</module>
+        <module>hr-persistence</module>
+        <module>hr-apis</module>
     </modules>
 
 	<dependencyManagement>

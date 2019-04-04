@@ -26,7 +26,7 @@
 	<dependencies>
 		<dependency>
             <groupId>com.binbol</groupId>
-			<artifactId>binbol-entity</artifactId>
+			<artifactId>binbol-persistence</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
