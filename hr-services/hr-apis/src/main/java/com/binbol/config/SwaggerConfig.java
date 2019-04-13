@@ -21,18 +21,18 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ecoe.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.binbol.controller"))
                 .build()
                 .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "ECOE REST API for user service",
+                "BINBOL REST API for user service",
                 "See the information.",
-                "API ECOE01",
+                "API BINBOL",
                 "Terms of service",
-                new Contact("ECOE company", "https://ecoegroup.com", "info@ecoe.vn"),
-                "License of ECOE company", "API license URL", Collections.emptyList());
+                new Contact("ECOE company", "https://binbol.vn", "hongvu@binbol.vn"),
+                "License of BINBOL company", "API license URL", Collections.emptyList());
     }
 }

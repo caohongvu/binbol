@@ -4,11 +4,8 @@ package com.binbol.dto;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(value = { "password", "newPassword", "socialUserId", "socialType" }, allowSetters= true)
 public class UserAccountDto {
-	
+
 	private Long id;
 	
 	private String username;
@@ -16,6 +13,8 @@ public class UserAccountDto {
 	private String password;
 	
 	private Long tenantId;
+	
+	private String token;
 	
 	private Long creatdBy;
 	
@@ -68,6 +67,14 @@ public class UserAccountDto {
 
 	public void setTenantId(Long tenantId) {
 		this.tenantId = tenantId;
+	}
+	
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public Long getCreatdBy() {
