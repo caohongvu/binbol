@@ -68,10 +68,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 	@Override
 	public UserAccountDto login(String username, String password) {
-			UserAccountEntity userAccountFrom = userAccountRepository.findByUsername(username);
-			if(userAccountFrom != null && MD5Util.hash(password).equals(userAccountFrom.getPassword())){
-				return generateTonkenWhenLoginSuccess(userAccountFrom);
-			}
+		UserAccountEntity userAccountFrom = userAccountRepository.findByUsername(username);
+
+		if(userAccountFrom != null && MD5Util.hash(password).equals(userAccountFrom.getPassword())){
+			return generateTonkenWhenLoginSuccess(userAccountFrom);
+		}
 		
 		throw new BinbolRuntimeException(EWSMessage.RESOURCE_NOT_FOUND);
 	}

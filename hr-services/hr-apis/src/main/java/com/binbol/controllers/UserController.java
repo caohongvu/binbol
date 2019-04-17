@@ -33,8 +33,9 @@ public class UserController {
     @PostMapping
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public UserAccountDto addNewUser(@RequestBody UserAccountDto userAccountDTO) {
-        	UserAccountDto userAccountResponse = userService.createUser(userAccountDTO);
-            return userAccountResponse;
+        UserAccountDto userAccountResponse = userService.createUser(userAccountDTO);
+        
+        return userAccountResponse;
     }
 
 
@@ -68,14 +69,13 @@ public class UserController {
         }
     }
 
-    @PostMapping
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping(value = "/login")
     @PermitAll
     public ResponseEntity<UserAccountDto> login(@RequestBody UserAccountDto loginRequest) {
         try {
             UserAccountDto userAccountDTOResult = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
             return new ResponseEntity<>(userAccountDTOResult, HttpStatus.OK);
-        } catch (BinbolRuntimeException e){
+        } catch (BinbolRuntimeException e) {
             if((ERR_CODE_ACTIVE).equals(e.errorID)){
                 e.printStackTrace();
                 return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
