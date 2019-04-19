@@ -9,6 +9,8 @@ import javax.annotation.PostConstruct;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.binbol.dto.RoleMenuPermissionDto;
@@ -27,6 +29,7 @@ import com.binbol.services.cache.TokenCache;
 import com.binbol.util.JwtTokenDataObject;
 import com.binbol.util.JwtUtilService;
 import com.binbol.util.MD5Util;
+import com.binbol.entities.UserAccountEntity;
 
 @Service
 public class UserAccountServiceImpl implements UserAccountService {
@@ -169,5 +172,13 @@ public class UserAccountServiceImpl implements UserAccountService {
 	@PostConstruct
 	void init() {
 		mapper = new ModelMapper();
+	}
+
+
+	@Override
+	public Page<UserAccountEntity> findAll(Pageable pageable) {
+		Page<UserAccountEntity> entities = userAccountRepository.findAll(pageable);
+		
+		return entities;
 	}
 }
