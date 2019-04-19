@@ -6,6 +6,7 @@ import javax.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,6 +70,7 @@ public class UserController {
         }
     }
 
+    @CrossOrigin
     @PostMapping(value = "/login")
     @PermitAll
     public ResponseEntity<UserAccountDto> login(@RequestBody UserAccountDto loginRequest) {
@@ -79,7 +81,7 @@ public class UserController {
             if((ERR_CODE_ACTIVE).equals(e.errorID)){
                 e.printStackTrace();
                 return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
-            }else  {
+            } else  {
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
         }
