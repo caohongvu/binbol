@@ -6,6 +6,7 @@ import javax.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,9 @@ public class UserController {
     @PostMapping
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public UserAccountDto addNewUser(@RequestBody UserAccountDto userAccountDTO) {
-        	UserAccountDto userAccountResponse = userService.createUser(userAccountDTO);
-            return userAccountResponse;
+        UserAccountDto userAccountResponse = userService.createUser(userAccountDTO);
+        
+        return userAccountResponse;
     }
 
 
@@ -68,18 +70,18 @@ public class UserController {
         }
     }
 
-    @PostMapping
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @CrossOrigin
+    @PostMapping(value = "/login")
     @PermitAll
     public ResponseEntity<UserAccountDto> login(@RequestBody UserAccountDto loginRequest) {
         try {
             UserAccountDto userAccountDTOResult = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
             return new ResponseEntity<>(userAccountDTOResult, HttpStatus.OK);
-        } catch (BinbolRuntimeException e){
+        } catch (BinbolRuntimeException e) {
             if((ERR_CODE_ACTIVE).equals(e.errorID)){
                 e.printStackTrace();
                 return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
-            }else  {
+            } else  {
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
         }
