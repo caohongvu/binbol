@@ -1,4 +1,4 @@
-template/
+target/
 .classpath
 .project
 .settings/
@@ -6,3 +6,5 @@ binbol-common/.gitignore
 hr-services/hr-apis/.gitignore
 hr-services/hr-application/.gitignore
 hr-services/hr-persistence/.gitignore
+*.class
+*.MF
